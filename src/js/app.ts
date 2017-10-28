@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../css/custom.css';
 
 import ShoppingCartData from './shoppingCarts/shoppingCartData';
+import ShoppingCart from './shoppingCarts/shoppingCart';
 
 $(document).ready(function () {
     $('input[name=qty]').on('change', function () {
@@ -20,29 +21,11 @@ $(document).ready(function () {
             })
         });
 
-        var level = $('select[name=memberLevel]').val();
+        let level: string = $('select[name=memberLevel]').val() as string;
 
         // 計算邏輯
-        var totalPrice = cart.reduce((s, i) => s += i.price * i.qty, 0);
-        var totalQty = cart.reduce((s, i) => s += i.qty, 0);
-
-        var price = 0;
-        if (level === 'VIP') {
-            if (totalPrice > 500) {
-                price = totalPrice * 0.8;
-            }
-            else {
-                price = totalPrice;
-            }
-        }
-        else if (level === 'Normal') {
-            if (totalPrice > 1000 && totalQty > 3) {
-                price = totalPrice * 0.85;
-            }
-            else {
-                price = totalPrice;
-            }
-        }
+        const shoppingCart = new ShoppingCart();
+        const { totalPrice, totalQty, price } = shoppingCart.Calculate(cart, level);
 
         // 把計算結果顯示到畫面
         $('#totalPrice').text(totalPrice);
