@@ -4,12 +4,14 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../css/custom.css';
 
+import ShoppingCartData from './shoppingCarts/shoppingCartData';
+
 $(document).ready(function () {
     $('input[name=qty]').on('change', function () {
-        var cart: any[] = [];
+        var cart: ShoppingCartData[] = [];
         $('.product').each(function () {
-            var price = $(this).find('p').text();
-            var qty = $(this).find('input').val();
+            let price: number = +($(this).find('p').text());
+            let qty: number = $(this).find('input').val() as number;
 
             cart.push({
                 price: price,
@@ -22,7 +24,7 @@ $(document).ready(function () {
         var totalPrice = cart.reduce((s, i) => s += i.price * i.qty, 0);
         $('#totalPrice').text(totalPrice);
 
-        var totalQty = cart.reduce((s, i) => s += parseInt(i.qty), 0);
+        var totalQty = cart.reduce((s, i) => s += i.qty, 0);
         $('#totalQty').text(totalQty);
 
         var price = 0;
