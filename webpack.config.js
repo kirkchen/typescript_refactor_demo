@@ -5,8 +5,11 @@ module.exports = {
     entry: {
         app: [
             'webpack-dev-server/client?http://localhost:8080/',
-            './src/js/app.js'
+            './src/js/app.ts'
         ]
+    },
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js']
     },
     output: {
         path: path.resolve(__dirname, 'dist/js'),
@@ -15,6 +18,7 @@ module.exports = {
     },
     module: {
         loaders: [
+            { test: /\.tsx?$/, loader: 'ts-loader' },
             { test: /\.css$/, loader: 'style-loader!css-loader' },
             { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&minetype=application/font-woff" },
             { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&minetype=application/font-woff2" },
