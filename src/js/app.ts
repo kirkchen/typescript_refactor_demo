@@ -22,6 +22,7 @@ $(document).ready(function () {
 
         var level = $('select[name=memberLevel]').val();
 
+        // 計算邏輯
         var totalPrice = cart.reduce((s, i) => s += i.price * i.qty, 0);
         var totalQty = cart.reduce((s, i) => s += i.qty, 0);
 
@@ -29,25 +30,24 @@ $(document).ready(function () {
         if (level === 'VIP') {
             if (totalPrice > 500) {
                 price = totalPrice * 0.8;
-                $('#price').text(price);
             }
             else {
-                $('#price').text(totalPrice);
+                price = totalPrice;
             }
         }
         else if (level === 'Normal') {
             if (totalPrice > 1000 && totalQty > 3) {
                 price = totalPrice * 0.85;
-                $('#price').text(price);
             }
             else {
-                $('#price').text(totalPrice);
+                price = totalPrice;
             }
         }
 
         // 把計算結果顯示到畫面
         $('#totalPrice').text(totalPrice);
         $('#totalQty').text(totalQty);
+        $('#price').text(price);
     });
 
     $('select').on('change', function () {
