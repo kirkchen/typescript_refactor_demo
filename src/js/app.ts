@@ -13,17 +13,7 @@ $(document).ready(function () {
 
     function ShoppingCartCalculate() {
         // 取得畫面購物車輸入的資料
-        var cart: ShoppingCartData[] = [];
-        $('.product').each(function () {
-            let price: number = +($(this).find('p').text());
-            let qty: number = $(this).find('input').val() as number;
-
-            cart.push({
-                price: price,
-                qty: qty
-            })
-        });
-
+        var cart: ShoppingCartData[] = GetShoppingCartData();
         let level: string = $('select[name=memberLevel]').val() as string;
 
         // 計算邏輯
@@ -34,6 +24,22 @@ $(document).ready(function () {
         $('#totalPrice').text(totalPrice);
         $('#totalQty').text(totalQty);
         $('#price').text(price);
+    }
+
+    function GetShoppingCartData(): ShoppingCartData[] {
+        let shoppingCartDatas: ShoppingCartData[] = [];
+
+        $('.product').each(function () {
+            let price: number = +($(this).find('p').text());
+            let qty: number = $(this).find('input').val() as number;
+
+            shoppingCartDatas.push({
+                price: price,
+                qty: qty
+            })
+        })
+
+        return shoppingCartDatas;
     }
 });
 
