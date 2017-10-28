@@ -1,0 +1,27 @@
+{
+  "name": "lab03",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha tests/",
+    "dev": "webpack-dev-server --devtool eval-source-map --progress --colors --hot --inline --content-base ./dist",
+    "build": "webpack --progress --colors"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "css-loader": "^0.28.7",
+    "file-loader": "^0.11.2",
+    "http-server": "^0.10.0",
+    "mocha": "^3.5.3",
+    "nightmare": "^2.10.0",
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1"
+  }
+}
