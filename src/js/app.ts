@@ -13,12 +13,12 @@ $(document).ready(function () {
 
     function ShoppingCartCalculate() {
         // 取得畫面購物車輸入的資料
-        var cart: ShoppingCartData[] = GetShoppingCartData();
+        var shoppingCartDatas: ShoppingCartData[] = GetShoppingCartData();
         let level: string = $('select[name=memberLevel]').val() as string;
 
         // 計算邏輯
         const shoppingCart = new ShoppingCart();
-        const { totalPrice, totalQty, price } = shoppingCart.Calculate(cart, level);
+        const { totalPrice, totalQty, price } = shoppingCart.Calculate(shoppingCartDatas, level);
 
         // 把計算結果顯示到畫面
         $('#totalPrice').text(totalPrice);
