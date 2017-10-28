@@ -1,8 +1,8 @@
 /// <reference path="../../node_modules/@types/jquery/index.d.ts" />
 
-require('bootstrap');
-require('bootstrap/dist/css/bootstrap.css');
-require('../css/custom.css');
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import '../css/custom.css';
 
 $(document).ready(function () {
     $('input[name=qty]').on('change', function () {
