@@ -8,6 +8,7 @@ import ShoppingCartData from './shoppingCarts/shoppingCartData';
 
 $(document).ready(function () {
     $('input[name=qty]').on('change', function () {
+        // 取得畫面購物車輸入的資料
         var cart: ShoppingCartData[] = [];
         $('.product').each(function () {
             let price: number = +($(this).find('p').text());
@@ -22,10 +23,7 @@ $(document).ready(function () {
         var level = $('select[name=memberLevel]').val();
 
         var totalPrice = cart.reduce((s, i) => s += i.price * i.qty, 0);
-        $('#totalPrice').text(totalPrice);
-
         var totalQty = cart.reduce((s, i) => s += i.qty, 0);
-        $('#totalQty').text(totalQty);
 
         var price = 0;
         if (level === 'VIP') {
@@ -46,6 +44,10 @@ $(document).ready(function () {
                 $('#price').text(totalPrice);
             }
         }
+
+        // 把計算結果顯示到畫面
+        $('#totalPrice').text(totalPrice);
+        $('#totalQty').text(totalQty);
     });
 
     $('select').on('change', function () {
