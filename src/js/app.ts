@@ -8,7 +8,10 @@ import ShoppingCartData from './shoppingCarts/shoppingCartData';
 import ShoppingCart from './shoppingCarts/shoppingCart';
 
 $(document).ready(function () {
-    $('input[name=qty]').on('change', function () {
+    $('input[name=qty]').on('change', ShoppingCartCalculate);
+    $('select').on('change', ShoppingCartCalculate);
+
+    function ShoppingCartCalculate() {
         // 取得畫面購物車輸入的資料
         var cart: ShoppingCartData[] = [];
         $('.product').each(function () {
@@ -31,11 +34,6 @@ $(document).ready(function () {
         $('#totalPrice').text(totalPrice);
         $('#totalQty').text(totalQty);
         $('#price').text(price);
-    });
-
-    $('select').on('change', function () {
-        var level = $(this).val();
-        $('input[name=qty]:eq(0)').trigger('change');
-    })
+    }
 });
 
