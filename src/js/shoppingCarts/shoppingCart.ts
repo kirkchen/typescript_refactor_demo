@@ -2,6 +2,7 @@ import ShoppingCartData from './shoppingCartData';
 import ShoppingCartResult from './shoppingCartResult';
 import IDiscounter from './discounters/idiscounter';
 import VipDiscounter from './discounters/vipDiscounter';
+import NormalDiscounter from './discounters/normalDiscounter';
 
 export default class ShoppingCart {
     Calculate(cartDatas: ShoppingCartData[], level: string): ShoppingCartResult {
@@ -14,12 +15,8 @@ export default class ShoppingCart {
             price = discounter.Calculate(totalPrice, totalQty);
         }
         else if (level === 'Normal') {
-            if (totalPrice > 1000 && totalQty > 3) {
-                price = totalPrice * 0.85;
-            }
-            else {
-                price = totalPrice;
-            }
+            let discounter: IDiscounter = new NormalDiscounter();
+            price = discounter.Calculate(totalPrice, totalQty);
         }
 
         return {
