@@ -10,14 +10,14 @@ export default class ShoppingCart {
         var totalQty = cartDatas.reduce((s, i) => s += i.qty, 0);
 
         var price = 0;
+        let discounter: IDiscounter;
         if (level === 'VIP') {
-            let discounter: IDiscounter = new VipDiscounter();
-            price = discounter.Calculate(totalPrice, totalQty);
+            discounter = new VipDiscounter();
         }
         else if (level === 'Normal') {
-            let discounter: IDiscounter = new NormalDiscounter();
-            price = discounter.Calculate(totalPrice, totalQty);
+            discounter = new NormalDiscounter();
         }
+        price = discounter!.Calculate(totalPrice, totalQty);
 
         return {
             totalPrice,
