@@ -1,56 +1,22 @@
-# Lab - 練習重構
+# Typescript Refactor sample
 
-## 練習步驟
+## Setup
 
-1. 練習分開 jQuery 與 計算邏輯
+1. Install Package
 
-    ``` js
-    var price = 0;
-    if (level === 'VIP') {
-        if(totalPrice > 500){
-            price = totalPrice * 0.8;
-        }
-        else{
-            price = totalPrice;
-        }
-    }
-    else if(level === 'Normal'){
-        if(totalPrice > 1000 && totalQty > 3){
-            price = totalPrice * 0.85;
-        }
-        else {
-            price = totalPrice;
-        }
-    }
-
-    $('#price').text(price);
+    ```
+    npm install
     ```
 
-1. 把計算邏輯抽到 shoppingCart.ts
+1. Start develop
 
-    ``` js
-    export default class ShoppingCart {
-        Calculate(totalPrice: number, totalQty: number, level: string) {
-            var price = 0;
-            if (level === 'VIP') {
-                if (totalPrice > 500) {
-                    price = totalPrice * 0.8;
-                }
-                else {
-                    price = totalPrice;
-                }
-            }
-            else if (level === 'Normal') {
-                if (totalPrice > 1000 && totalQty > 3) {
-                    price = totalPrice * 0.85;
-                }
-                else {
-                    price = totalPrice;
-                }
-            }
-            return price;
-        }
-    }
+    ```
+    npm run dev
     ```
 
-1. 繼續重構、測試
+1. Run Test
+
+    ```
+    npm run test
+    ```
+
