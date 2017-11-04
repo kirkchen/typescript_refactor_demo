@@ -1,23 +1,7 @@
 import ShoppingCartData from './shoppingCartData';
 import ShoppingCartResult from './shoppingCartResult';
 import IDiscounter from './discounters/idiscounter';
-import VipDiscounter from './discounters/vipDiscounter';
-import NormalDiscounter from './discounters/normalDiscounter';
-
-export class DiscounterFactory {
-    static GetDiscounter(level: string): IDiscounter {
-        let discounter: IDiscounter;
-        
-        if (level === 'VIP') {
-            discounter = new VipDiscounter();
-        }
-        else if (level === 'Normal') {
-            discounter = new NormalDiscounter();
-        }
-
-        return discounter!;
-    }
-}
+import DiscounterFactory from './discounters/discounterFactory';
 
 export default class ShoppingCart {
     Calculate(cartDatas: ShoppingCartData[], level: string): ShoppingCartResult {
